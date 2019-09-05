@@ -106,6 +106,72 @@ g1 = 'red tile'
 h1 = 'white tile'
 row1 = [a1, b1, c1, d1, e1, f1, g1, h1]
 
+case move_from
+when "a1"
+    move_from = $a1
+when "a3"
+    move_from = $a3
+when "a5"
+    move_from = $a5
+when "a7"
+    move_from = $a7
+when "b2"
+    move_from = $b2
+when "b4"
+    move_from = $b4
+when "b6"
+    move_from = $b6
+when "b8"
+    move_from = $b8
+when "c1"
+    move_from = $c1
+when "c3"
+    move_from = $c3
+when "c5"
+    move_from = $c5
+when "c7"
+    move_from = $c7
+when "d2"
+    move_from = $d2
+when "d4"
+    move_from = $d4
+when "d6"
+    move_from = $d6
+when "d8"
+    move_from = $d8
+when "e1"
+    move_from = $e1
+when "e3"
+    move_from = $e3
+when "e5"
+    move_from = $e5
+when "e7"
+    move_from = $e7
+when "f2"
+    move_from = $f2
+when "f4"
+    move_from = $f4
+when "f6"
+    move_from = $f6
+when "f8"
+    move_from = $f8
+when "g1"
+    move_from = $g1
+when "g3"
+    move_from = $g3
+when "g5"
+    move_from = $g5
+when "g7"
+    move_from = $g7
+when "h2"
+    move_from = $h2
+when "h4"
+    move_from = $h4
+when "h6"
+    move_from = $h6
+when "h8"
+    move_from = $h8
+end
 
 
 

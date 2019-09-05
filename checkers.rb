@@ -1,110 +1,105 @@
 # encoding: utf-8
 require 'colorize'
-require './matrix.rb'
 
 # for each of a row array, if the variable is equal to 'black tile' {insert colorize code fir black} else if variable equals 'red tile',
 # {insert colorize code for red}. else if .... for 'black checker' and 'red checker' also for  'black king' and 'red king'
 
-# initializing game board...
-
-#row 8
-a8 = 'black tile'
-b8 = 'red checker'
-c8 = 'black tile'
-d8 = 'red checker'
-e8 = 'black tile'
-f8 = 'red checker'
-g8 = 'black tile'
-h8 = 'red checker'
-$row8 = [a8, b8, c8, d8, e8, f8, g8, h8]
+# GAME TIMING =================================
 
 
-#row 7
-a7 = 'red checker'
-b7 = 'black tile'
-c7 = 'red checker'
-d7 = 'black tile'
-e7 = 'red checker'
-f7 = 'black tile'
-g7 = 'red checker'
-h7 = 'black tile'
-$row7 = [a7, b7, c7, d7, e7, f7, g7, h7]
 
-#row 6
-a6 = 'black tile'
-b6 = 'red checker'
-c6 = 'black tile'
-d6 = 'red checker'
-e6 = 'black tile'
-f6 = 'red checker'
-g6 = 'black tile'
-h6 = 'red checker'
-$row6 = [a6, b6, c6, d6, e6, f6, g6, h6]
+# INPUT =======================================
 
-#row 5
-a5 = 'red tile'
-b5 = 'black tile'
-c5 = 'red tile'
-d5 = 'black tile'
-e5 = 'red tile'
-f5 = 'black tile'
-g5 = 'red tile'
-h5 = 'black tile'
-$row5 = [a5, b5, c5, d5, e5, f5, g5, h5]
+def player_move
+    # promt user input to move a chercker
+    puts ' '
+    puts "which checker will you move?"
+    move_from = gets.chomp 
+    puts "where will you move?"
+    move_to = gets.chomp
+    puts ' '
 
-#row 4
-a4 = 'black tile'
-b4 = 'red tile'
-c4 = 'black tile'
-d4 = 'red tile'
-e4 = 'black tile'
-f4 = 'red tile'
-g4 = 'black tile'
-h4 = 'red tile'
-$row4 = [a4, b4, c4, d4, e4, f4, g4, h4]
+    # switching input variables to global variables for use inside of methods
+    $move_from = [move_from[0], move_from[1]]
+    $move_to   = [move_to[0], move_to[1]]
 
-#row 3
-a3 = 'black checker'
-b3 = 'black tile'
-c3 = 'black checker'
-d3 = 'black tile'
-e3 = 'black checker'
-f3 = 'black tile'
-g3 = 'black checker'
-h3 = 'black tile'
-$row3 = [a3, b3, c3, d3, e3, f3, g3, h3]
+    # turns user move_from input into a red tile
+    case $move_from[0]
+    when "1"
+        $row1[$move_from[1]] = 'red tile'
+    when "2"
+        $row2[$move_from[1]] = 'red tile'
+    when '3'
+        $row3[$move_from[1]] = 'red tile'
+    when '4'
+        $row4[$move_from[1]] = 'red tile'
+    when '5'
+        $row5[$move_from[1]] = 'red tile'
+    when '6'
+        $row6[$move_from[1]] = 'red tile'
+    when '7'
+        $row7[$move_from[1]] = 'red tile'
+    when '8'
+        $row8[$move_from[1]] = 'red tile'
+    end
+    
+    # turn user move_to input into a black checker
+    case $move_to[0]
+    when "1"
+        $row1[$move_to[1]] = 'black checker'
+    when "2"
+        $row2[$move_to[1]] = 'black checker'
+    when '3'
+        $row3[$move_to[1]] = 'black checker'
+    when '4'
+        $row4[$move_to[1]] = 'black checker'
+    when '5'
+        $row5[$move_to[1]] = 'black checker'
+    when '6'
+        $row6[$move_to[1]] = 'black checker'
+    when '7'
+        $row7[$move_to[1]] = 'black checker'
+    when '8'
+        $row8[$move_to[1]] = 'black checker'
+    end
+end
 
-#row 2
-a2 = 'black tile'
-b2 = 'black checker'
-c2 = 'black tile'
-d2 = 'black checker'
-e2 = 'black tile'
-f2 = 'black checker'
-g2 = 'black tile'
-h2 = 'black checker'
-$row2 = [a2, b2, c2, d2, e2, f2, g2, h2]
+# GAME LOGIC ==================================
 
-#row 1
-a1 = 'black checker'
-b1 = 'black tile'
-c1 = 'black checker'
-d1 = 'black tile'
-e1 = 'black checker'
-f1 = 'black tile'
-g1 = 'black checker'
-h1 = 'black tile'
-$row1 = [a1, b1, c1, d1, e1, f1, g1, h1]
 
+
+# RENDER OUTPUT ===============================
+
+# defalt checker board and checker placement in the form of hashes
+$row8 = {'a' => 'black tile', 'b' => 'red checker', 'c' => 'black tile', 'd' => 'red checker', 'e' => 'black tile', 'f' => 'red checker', 'g' => 'black tile', 'h' => 'red checker'}
+
+$row7 = {'a' => 'red checker', 'b' => 'black tile', 'c' => 'red checker', 'd' => 'black tile', 'e' => 'red checker', 'f' => 'black tile', 'g' => 'red checker', 'h' => 'black tile'}
+
+$row6 = {'a' => 'black tile', 'b' => 'red checker', 'c' => 'black tile', 'd' => 'red checker', 'e' => 'black tile', 'f' => 'red checker', 'g' => 'black tile', 'h' => 'red checker'}
+
+$row5 = {'a' => 'red tile', 'b' => 'black tile', 'c' => 'red tile', 'd' => 'black tile', 'e' => 'red tile', 'f' => 'black tile', 'g' => 'red tile', 'h' => 'black tile'}
+
+$row4 = {'a' => 'black tile', 'b' => 'red tile', 'c' => 'black tile', 'd' => 'red tile', 'e' => 'black tile', 'f' => 'red tile', 'g' => 'black tile', 'h' => 'red tile'}
+
+$row3 = {'a' => 'black checker', 'b' => 'black tile', 'c' => 'black checker', 'd' => 'black tile', 'e' => 'black checker', 'f' => 'black tile', 'g' => 'black checker', 'h' => 'black tile'}
+
+$row2 = {'a' => 'black tile', 'b' => 'black checker', 'c' => 'black tile', 'd' => 'black checker', 'e' => 'black tile', 'f' => 'black checker', 'g' => 'black tile', 'h' => 'black checker'}
+
+$row1 = {'a' => 'black checker', 'b' => 'black tile', 'c' => 'black checker', 'd' => 'black tile', 'e' => 'black checker', 'f' => 'black tile', 'g' => 'black checker', 'h' => 'black tile'}
+ 
+# displays each row of the checker board
 def set_row(row)
-    row.each do |tile|
-        if tile == 'black tile'
+
+
+
+    row.each do |tile, value|
+        if value == 'black tile'
             print "  ".colorize(background: :black)
-        elsif tile == 'red tile'
+        elsif value == 'red tile'
             print "  ".colorize(background: :red)
-        elsif tile == 'black checker'
+        elsif value == 'black checker'
             print "@ ".colorize(:black ).colorize( :background => :red)
-        elsif tile == 'red checker'
+        elsif value == 'red checker'
             print "@ ".colorize(:white ).colorize( :background => :red)
         end
 
@@ -112,22 +107,47 @@ def set_row(row)
     puts ''
 end
 
-# prints out board tiles and peices
+# prints out board row and col numbers, tiles and peices
 def checker_board
+    puts ' '
+    print 8
     set_row($row8)
+    print 7
     set_row($row7)
+    print 6
     set_row($row6)
+    print 5
     set_row($row5)
+    print 4
     set_row($row4)
+    print 3
     set_row($row3)
+    print 2
     set_row($row2)
+    print 1
     set_row($row1)
+    print ' '
+    print 'a'
+    print ' '
+    print 'b'
+    print ' '
+    print 'c'
+    print ' '
+    print 'd'
+    print ' '
+    print 'e'
+    print ' '
+    print 'f'
+    print ' '
+    print 'g'
+    print ' '
+    print 'h'
+    puts ' '
 end 
 # prints the game board to cli.
+
 checker_board
-#########
 
+player_move
 
-
-
-
+checker_board
